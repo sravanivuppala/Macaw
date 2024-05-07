@@ -113,9 +113,9 @@ extension AnimationProducer {
     // MARK: - Combine animation
     func addCombineAnimation(_ combineAnimation: Animation, _ context: AnimationContext) {
         guard let combine = combineAnimation as? CombineAnimation,
-            let renderer = combine.nodeRenderer,
-            let view = renderer.view else {
-                return
+              let renderer = combine.nodeRenderer,
+              let view = renderer.view else {
+            return
         }
 
         var animations = combine.animations

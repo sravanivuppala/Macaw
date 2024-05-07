@@ -127,7 +127,7 @@ func addShapeAnimation(_ animation: BasicAnimation, _ context: AnimationContext,
     }
 }
 
-fileprivate func generateShapeAnimation(_ context: AnimationContext, from: Shape, to: Shape, animation: ShapeAnimation, duration: Double, renderTransform: CGAffineTransform) -> CAAnimation {
+private func generateShapeAnimation(_ context: AnimationContext, from: Shape, to: Shape, animation: ShapeAnimation, duration: Double, renderTransform: CGAffineTransform) -> CAAnimation {
 
     let group = CAAnimationGroup()
 

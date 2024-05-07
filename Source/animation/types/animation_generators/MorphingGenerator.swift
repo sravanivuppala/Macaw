@@ -58,7 +58,7 @@ func addMorphingAnimation(_ animation: BasicAnimation, _ context: AnimationConte
         animationCache?.freeLayer(renderer)
 
         if  !animation.cycled &&
-            !animation.manualStop {
+                !animation.manualStop {
             animation.completion?()
         }
 
@@ -104,7 +104,7 @@ func addMorphingAnimation(_ animation: BasicAnimation, _ context: AnimationConte
     }
 }
 
-fileprivate func pathAnimation(from: Locus, to: Locus, duration: Double, renderTransform: CGAffineTransform) -> CAAnimation {
+private func pathAnimation(from: Locus, to: Locus, duration: Double, renderTransform: CGAffineTransform) -> CAAnimation {
 
     var transform = renderTransform
     let fromPath = from.toCGPath().copy(using: &transform)

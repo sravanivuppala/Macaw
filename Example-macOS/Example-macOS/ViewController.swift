@@ -11,10 +11,9 @@ import Macaw
 
 class ViewController: NSViewController {
 
-  @IBOutlet weak var mainView: EasingView!
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-  }
-}
+    @IBOutlet weak var mainView: EasingView!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}

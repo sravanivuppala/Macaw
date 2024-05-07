@@ -8,7 +8,7 @@
 import Cocoa
 
 class ExampleViewController: NSViewController {
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.view.wantsLayer = true

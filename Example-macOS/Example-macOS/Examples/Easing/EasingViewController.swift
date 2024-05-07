@@ -9,15 +9,15 @@
 import Cocoa
 
 class EasingViewController: NSViewController {
-  @IBOutlet weak var easingView: EasingView!
-  
-  override func viewDidAppear() {
-    super.viewDidAppear()
-    easingView.animation.play()
-  }
-  
-  override func viewWillDisappear() {
-    super.viewDidDisappear()
-    easingView.animation.stop()
-  }
+    @IBOutlet weak var easingView: EasingView!
+
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        easingView.animation.play()
+    }
+
+    override func viewWillDisappear() {
+        super.viewDidDisappear()
+        easingView.animation.stop()
+    }
 }

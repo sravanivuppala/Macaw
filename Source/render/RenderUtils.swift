@@ -20,7 +20,7 @@ class RenderUtils {
         _ node: Node,
         view: MacawView?,
         animationCache: AnimationCache?
-        ) -> NodeRenderer {
+    ) -> NodeRenderer {
         if let group = node as? Group {
             return GroupRenderer(group: group, view: view, animationCache: animationCache)
         } else if let shape = node as? Shape {
@@ -105,7 +105,7 @@ class RenderUtils {
         if let round = locus as? RoundRect {
             let corners = CGSize(width: CGFloat(round.rx), height: CGFloat(round.ry))
             return MBezierPath(roundedRect: round.rect.toCG(), byRoundingCorners:
-                MRectCorner.allCorners, cornerRadii: corners)
+                                MRectCorner.allCorners, cornerRadii: corners)
         } else if let arc = locus as? Arc {
             if arc.ellipse.rx == arc.ellipse.ry {
                 return arcToPath(arc)
@@ -559,7 +559,7 @@ class RenderUtils {
         } else if let round = locus as? RoundRect {
             let corners = CGSize(width: CGFloat(round.rx), height: CGFloat(round.ry))
             let path = MBezierPath(roundedRect: round.rect.toCG(), byRoundingCorners:
-                MRectCorner.allCorners, cornerRadii: corners).cgPath
+                                    MRectCorner.allCorners, cornerRadii: corners).cgPath
             ctx.addPath(path)
         } else if let circle = locus as? Circle {
             let cx = circle.cx

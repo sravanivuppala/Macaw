@@ -124,7 +124,7 @@ public extension AnimatableVariable where T: TransformInterpolation {
             let result = t1.concat(with: t2)
 
             return result
-            }
+        }
         }
 
         return TransformAnimation(animatedNode: self.node!, factory: factory, animationDuration: during, delay: delay)

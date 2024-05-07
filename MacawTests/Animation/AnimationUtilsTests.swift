@@ -10,21 +10,21 @@ import XCTest
 @testable import Macaw
 
 class AnimationUtilsTests: XCTestCase {
-    
+
     func testIndex() {
         let shape = Circle(cx: 0, cy: 0, r: 10)
-        
+
         let rootGroup = Group()
         let a = Shape(form: shape)
         rootGroup.contents.append(a)
-        
+
         let bGroup = Group()
         let c = Shape(form: shape)
         let d = Shape(form: shape)
         bGroup.contents.append(c)
         bGroup.contents.append(d)
         rootGroup.contents.append(bGroup)
-        
+
         let e = Shape(form: shape)
         let f = Shape(form: shape)
         rootGroup.contents.append(e)
@@ -40,7 +40,7 @@ class AnimationUtilsTests: XCTestCase {
         let dRenderer = bRenderer?.renderers[1]
         let eRenderer = rootRenderer?.renderers[2]
         let fRenderer = rootRenderer?.renderers[3]
-        
+
         XCTAssert(rootRenderer?.zPosition == 0)
         XCTAssert(aRenderer?.zPosition == 1)
         XCTAssert(bRenderer?.zPosition == 2)

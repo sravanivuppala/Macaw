@@ -61,13 +61,13 @@ public class SWXMLHash {
     }
 
     /**
-    Method to configure how parsing works.
+     Method to configure how parsing works.
 
-    - parameters:
-        - configAction: a block that passes in an `SWXMLHashOptions` object with
-        options to be set
-    - returns: an `SWXMLHash` instance
-    */
+     - parameters:
+     - configAction: a block that passes in an `SWXMLHashOptions` object with
+     options to be set
+     - returns: an `SWXMLHash` instance
+     */
     class public func config(_ configAction: (SWXMLHashOptions) -> Void) -> SWXMLHash {
         let opts = SWXMLHashOptions()
         configAction(opts)
@@ -75,13 +75,13 @@ public class SWXMLHash {
     }
 
     /**
-    Begins parsing the passed in XML string.
+     Begins parsing the passed in XML string.
 
-    - parameters:
-        - xml: an XML string. __Note__ that this is not a URL but a
-        string containing XML.
-    - returns: an `XMLIndexer` instance that can be iterated over
-    */
+     - parameters:
+     - xml: an XML string. __Note__ that this is not a URL but a
+     string containing XML.
+     - returns: an `XMLIndexer` instance that can be iterated over
+     */
     public func parse(_ xml: String) -> XMLIndexer {
         guard let data = xml.data(using: options.encoding) else {
             return .xmlError(.encoding)
@@ -90,12 +90,12 @@ public class SWXMLHash {
     }
 
     /**
-    Begins parsing the passed in XML string.
+     Begins parsing the passed in XML string.
 
-    - parameters:
-        - data: a `Data` instance containing XML
-        - returns: an `XMLIndexer` instance that can be iterated over
-    */
+     - parameters:
+     - data: a `Data` instance containing XML
+     - returns: an `XMLIndexer` instance that can be iterated over
+     */
     public func parse(_ data: Data) -> XMLIndexer {
         let parser: SimpleXmlParser = options.shouldProcessLazily
             ? LazyXMLParser(options)
@@ -104,41 +104,41 @@ public class SWXMLHash {
     }
 
     /**
-    Method to parse XML passed in as a string.
+     Method to parse XML passed in as a string.
 
-    - parameter xml: The XML to be parsed
-    - returns: An XMLIndexer instance that is used to look up elements in the XML
-    */
+     - parameter xml: The XML to be parsed
+     - returns: An XMLIndexer instance that is used to look up elements in the XML
+     */
     class public func parse(_ xml: String) -> XMLIndexer {
         return SWXMLHash().parse(xml)
     }
 
     /**
-    Method to parse XML passed in as a Data instance.
+     Method to parse XML passed in as a Data instance.
 
-    - parameter data: The XML to be parsed
-    - returns: An XMLIndexer instance that is used to look up elements in the XML
-    */
+     - parameter data: The XML to be parsed
+     - returns: An XMLIndexer instance that is used to look up elements in the XML
+     */
     class public func parse(_ data: Data) -> XMLIndexer {
         return SWXMLHash().parse(data)
     }
 
     /**
-    Method to lazily parse XML passed in as a string.
+     Method to lazily parse XML passed in as a string.
 
-    - parameter xml: The XML to be parsed
-    - returns: An XMLIndexer instance that is used to look up elements in the XML
-    */
+     - parameter xml: The XML to be parsed
+     - returns: An XMLIndexer instance that is used to look up elements in the XML
+     */
     class public func lazy(_ xml: String) -> XMLIndexer {
         return config { conf in conf.shouldProcessLazily = true }.parse(xml)
     }
 
     /**
-    Method to lazily parse XML passed in as a Data instance.
+     Method to lazily parse XML passed in as a Data instance.
 
-    - parameter data: The XML to be parsed
-    - returns: An XMLIndexer instance that is used to look up elements in the XML
-    */
+     - parameter data: The XML to be parsed
+     - returns: An XMLIndexer instance that is used to look up elements in the XML
+     */
     class public func lazy(_ data: Data) -> XMLIndexer {
         return config { conf in conf.shouldProcessLazily = true }.parse(data)
     }
@@ -209,7 +209,7 @@ extension XMLParserDelegate {
                 didStartElement elementName: String,
                 namespaceURI: String?,
                 qualifiedName qName: String?,
-                attributes attributeDict: [String : String]) { }
+                attributes attributeDict: [String: String]) { }
 
     func parser(_ parser: Foundation.XMLParser,
                 didEndElement elementName: String,
@@ -453,7 +453,7 @@ public enum IndexingError: Error {
     case encoding
     case error
 
-// swiftlint:disable identifier_name
+    // swiftlint:disable identifier_name
     // unavailable
     @available(*, unavailable, renamed: "attribute(attr:)")
     public static func Attribute(attr: String) -> IndexingError {
@@ -479,7 +479,7 @@ public enum IndexingError: Error {
     public static var Error: IndexingError {
         fatalError("unavailable")
     }
-// swiftlint:enable identifier_name
+    // swiftlint:enable identifier_name
 }
 
 /// Returned from SWXMLHash, allows easy element lookup into XML data.
@@ -489,7 +489,7 @@ public enum XMLIndexer {
     case stream(IndexOps)
     case xmlError(IndexingError)
 
-// swiftlint:disable identifier_name
+    // swiftlint:disable identifier_name
     // unavailable
     @available(*, unavailable, renamed: "element(_:)")
     public static func Element(_: XMLElement) -> XMLIndexer {
@@ -511,7 +511,7 @@ public enum XMLIndexer {
     public static func withAttr(_ attr: String, _ value: String) throws -> XMLIndexer {
         fatalError("unavailable")
     }
-// swiftlint:enable identifier_name
+    // swiftlint:enable identifier_name
 
     /// The underlying XMLElement at the currently indexed level of XML.
     public var element: XMLElement? {
@@ -557,14 +557,14 @@ public enum XMLIndexer {
     }
 
     /**
-    Allows for element lookup by matching attribute values.
+     Allows for element lookup by matching attribute values.
 
-    - parameters:
-        - attr: should the name of the attribute to match on
-        - value: should be the value of the attribute to match on
-    - throws: an XMLIndexer.XMLError if an element with the specified attribute isn't found
-    - returns: instance of XMLIndexer
-    */
+     - parameters:
+     - attr: should the name of the attribute to match on
+     - value: should be the value of the attribute to match on
+     - throws: an XMLIndexer.XMLError if an element with the specified attribute isn't found
+     - returns: instance of XMLIndexer
+     */
     public func withAttribute(_ attr: String, _ value: String) throws -> XMLIndexer {
         switch self {
         case .stream(let opStream):
@@ -588,11 +588,11 @@ public enum XMLIndexer {
     }
 
     /**
-    Initializes the XMLIndexer
+     Initializes the XMLIndexer
 
-    - parameter _: should be an instance of XMLElement, but supports other values for error handling
-    - throws: an Error if the object passed in isn't an XMLElement or LaxyXMLParser
-    */
+     - parameter _: should be an instance of XMLElement, but supports other values for error handling
+     - throws: an Error if the object passed in isn't an XMLElement or LaxyXMLParser
+     */
     public init(_ rawObject: AnyObject) throws {
         switch rawObject {
         case let value as XMLElement:
@@ -605,10 +605,10 @@ public enum XMLIndexer {
     }
 
     /**
-    Initializes the XMLIndexer
+     Initializes the XMLIndexer
 
-    - parameter _: an instance of XMLElement
-    */
+     - parameter _: an instance of XMLElement
+     */
     public init(_ elem: XMLElement) {
         self = .element(elem)
     }
@@ -618,12 +618,12 @@ public enum XMLIndexer {
     }
 
     /**
-    Find an XML element at the current level by element name
+     Find an XML element at the current level by element name
 
-    - parameter key: The element name to index by
-    - returns: instance of XMLIndexer to match the element (or elements) found by key
-    - throws: Throws an XMLIndexingError.Key if no element was found
-    */
+     - parameter key: The element name to index by
+     - returns: instance of XMLIndexer to match the element (or elements) found by key
+     - throws: Throws an XMLIndexingError.Key if no element was found
+     */
     public func byKey(_ key: String) throws -> XMLIndexer {
         switch self {
         case .stream(let opStream):
@@ -648,11 +648,11 @@ public enum XMLIndexer {
     }
 
     /**
-    Find an XML element at the current level by element name
+     Find an XML element at the current level by element name
 
-    - parameter key: The element name to index by
-    - returns: instance of XMLIndexer to match the element (or elements) found by
-    */
+     - parameter key: The element name to index by
+     - returns: instance of XMLIndexer to match the element (or elements) found by
+     */
     public subscript(key: String) -> XMLIndexer {
         do {
             return try self.byKey(key)
@@ -664,12 +664,12 @@ public enum XMLIndexer {
     }
 
     /**
-    Find an XML element by index within a list of XML Elements at the current level
+     Find an XML element by index within a list of XML Elements at the current level
 
-    - parameter index: The 0-based index to index by
-    - throws: XMLIndexer.XMLError if the index isn't found
-    - returns: instance of XMLIndexer to match the element (or elements) found by index
-    */
+     - parameter index: The 0-based index to index by
+     - throws: XMLIndexer.XMLError if the index isn't found
+     - returns: instance of XMLIndexer to match the element (or elements) found by index
+     */
     public func byIndex(_ index: Int) throws -> XMLIndexer {
         switch self {
         case .stream(let opStream):
@@ -691,11 +691,11 @@ public enum XMLIndexer {
     }
 
     /**
-    Find an XML element by index
+     Find an XML element by index
 
-    - parameter index: The 0-based index to index by
-    - returns: instance of XMLIndexer to match the element (or elements) found by index
-    */
+     - parameter index: The 0-based index to index by
+     - returns: instance of XMLIndexer to match the element (or elements) found by index
+     */
     public subscript(index: Int) -> XMLIndexer {
         do {
             return try byIndex(index)
@@ -821,12 +821,12 @@ public class XMLElement: XMLContent {
     }
 
     /**
-    Initialize an XMLElement instance
+     Initialize an XMLElement instance
 
-    - parameters:
-        - name: The name of the element to be initialized
-        - index: The index of the element to be initialized
-    */
+     - parameters:
+     - name: The name of the element to be initialized
+     - index: The index of the element to be initialized
+     */
     init(name: String, index: Int = 0, caseInsensitive: Bool) {
         self.name = name
         self.caseInsensitive = caseInsensitive
@@ -834,13 +834,13 @@ public class XMLElement: XMLContent {
     }
 
     /**
-    Adds a new XMLElement underneath this instance of XMLElement
+     Adds a new XMLElement underneath this instance of XMLElement
 
-    - parameters:
-        - name: The name of the new element to be added
-        - withAttributes: The attributes dictionary for the element being added
-    - returns: The XMLElement that has now been added
-    */
+     - parameters:
+     - name: The name of the new element to be added
+     - withAttributes: The attributes dictionary for the element being added
+     - returns: The XMLElement that has now been added
+     */
 
     func addElement(_ name: String, withAttributes attributes: [String: String], caseInsensitive: Bool) -> XMLElement {
         let element = XMLElement(name: name, index: count, caseInsensitive: caseInsensitive)

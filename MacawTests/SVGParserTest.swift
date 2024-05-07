@@ -27,14 +27,14 @@ class SVGParserTest: XCTestCase {
             XCTFail(error.localizedDescription)
         }
     }
-    
+
     func testParseGivenInvalidPath() {
         let fullPath = "invalid fullPath"
         XCTAssertThrowsError(try SVGParser.parse(fullPath: fullPath)) { error in
             XCTAssertEqual(error as! SVGParserError, SVGParserError.noSuchFile(path: "invalid fullPath"))
         }
     }
-    
+
     func testParseGiventEmptyPath() {
         XCTAssertThrowsError(try SVGParser.parse(fullPath: "")) { error in
             XCTAssertEqual(error as! SVGParserError, SVGParserError.noSuchFile(path: ""))

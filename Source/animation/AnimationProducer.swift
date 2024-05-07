@@ -275,12 +275,12 @@ class AnimationProducer {
         var topLayers = [ShapeLayer]()
         if let bottomRenderer = bottomRenderer, let allRenderers = allRenderers {
             for renderer in allRenderers
-                where !(renderer is GroupRenderer)
-                    && renderer.zPosition > bottomRenderer.zPosition
-                    && !animationRenderers.contains(renderer) {
-                        if let layer = cache?.layerForNodeRenderer(renderer, context, animation: contentsAnimation) {
-                            topLayers.append(layer)
-                        }
+            where !(renderer is GroupRenderer)
+                && renderer.zPosition > bottomRenderer.zPosition
+                && !animationRenderers.contains(renderer) {
+                if let layer = cache?.layerForNodeRenderer(renderer, context, animation: contentsAnimation) {
+                    topLayers.append(layer)
+                }
             }
         }
 

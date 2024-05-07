@@ -39,13 +39,13 @@ public protocol XMLIndexerDeserializable {
 /// Provides XMLIndexer deserialization / type transformation support
 public extension XMLIndexerDeserializable {
     /**
-    A default implementation that will throw an error if it is called
+     A default implementation that will throw an error if it is called
 
-    - parameters:
-        - element: the XMLIndexer to be deserialized
-    - throws: an XMLDeserializationError.implementationIsMissing if no implementation is found
-    - returns: this won't ever return because of the error being thrown
-    */
+     - parameters:
+     - element: the XMLIndexer to be deserialized
+     - throws: an XMLDeserializationError.implementationIsMissing if no implementation is found
+     - returns: this won't ever return because of the error being thrown
+     */
     static func deserialize(_ element: XMLIndexer) throws -> Self {
         throw XMLDeserializationError.implementationIsMissing(
             method: "XMLIndexerDeserializable.deserialize(element: XMLIndexer)")
@@ -63,13 +63,13 @@ public protocol XMLElementDeserializable {
 /// Provides XMLElement deserialization / type transformation support
 public extension XMLElementDeserializable {
     /**
-    A default implementation that will throw an error if it is called
+     A default implementation that will throw an error if it is called
 
-    - parameters:
-        - element: the XMLElement to be deserialized
-    - throws: an XMLDeserializationError.implementationIsMissing if no implementation is found
-    - returns: this won't ever return because of the error being thrown
-    */
+     - parameters:
+     - element: the XMLElement to be deserialized
+     - throws: an XMLDeserializationError.implementationIsMissing if no implementation is found
+     - returns: this won't ever return because of the error being thrown
+     */
     static func deserialize(_ element: XMLElement) throws -> Self {
         throw XMLDeserializationError.implementationIsMissing(
             method: "XMLElementDeserializable.deserialize(element: XMLElement)")
@@ -89,7 +89,7 @@ public extension XMLAttributeDeserializable {
      A default implementation that will throw an error if it is called
 
      - parameters:
-         - attribute: The XMLAttribute to be deserialized
+     - attribute: The XMLAttribute to be deserialized
      - throws: an XMLDeserializationError.implementationIsMissing if no implementation is found
      - returns: this won't ever return because of the error being thrown
      */
@@ -208,11 +208,11 @@ public extension XMLIndexer {
     // MARK: - XMLElementDeserializable
 
     /**
-    Attempts to deserialize the current XMLElement element to `T`
+     Attempts to deserialize the current XMLElement element to `T`
 
-    - throws: an XMLDeserializationError.nodeIsInvalid if the current indexed level isn't an Element
-    - returns: the deserialized `T` value
-    */
+     - throws: an XMLDeserializationError.nodeIsInvalid if the current indexed level isn't an Element
+     - returns: the deserialized `T` value
+     */
     func value<T: XMLElementDeserializable>() throws -> T {
         switch self {
         case .element(let element):
@@ -225,11 +225,11 @@ public extension XMLIndexer {
     }
 
     /**
-    Attempts to deserialize the current XMLElement element to `T?`
+     Attempts to deserialize the current XMLElement element to `T?`
 
-    - returns: the deserialized `T?` value
-    - throws: an XMLDeserializationError is there is a problem with deserialization
-    */
+     - returns: the deserialized `T?` value
+     - throws: an XMLDeserializationError is there is a problem with deserialization
+     */
     func value<T: XMLElementDeserializable>() throws -> T? {
         switch self {
         case .element(let element):
@@ -242,11 +242,11 @@ public extension XMLIndexer {
     }
 
     /**
-    Attempts to deserialize the current XMLElement element to `[T]`
+     Attempts to deserialize the current XMLElement element to `[T]`
 
-    - returns: the deserialized `[T]` value
-    - throws: an XMLDeserializationError is there is a problem with deserialization
-    */
+     - returns: the deserialized `[T]` value
+     - throws: an XMLDeserializationError is there is a problem with deserialization
+     */
     func value<T: XMLElementDeserializable>() throws -> [T] {
         switch self {
         case .list(let elements):
@@ -261,11 +261,11 @@ public extension XMLIndexer {
     }
 
     /**
-    Attempts to deserialize the current XMLElement element to `[T]?`
+     Attempts to deserialize the current XMLElement element to `[T]?`
 
-    - returns: the deserialized `[T]?` value
-    - throws: an XMLDeserializationError is there is a problem with deserialization
-    */
+     - returns: the deserialized `[T]?` value
+     - throws: an XMLDeserializationError is there is a problem with deserialization
+     */
     func value<T: XMLElementDeserializable>() throws -> [T]? {
         switch self {
         case .list(let elements):
@@ -280,11 +280,11 @@ public extension XMLIndexer {
     }
 
     /**
-    Attempts to deserialize the current XMLElement element to `[T?]`
+     Attempts to deserialize the current XMLElement element to `[T?]`
 
-    - returns: the deserialized `[T?]` value
-    - throws: an XMLDeserializationError is there is a problem with deserialization
-    */
+     - returns: the deserialized `[T?]` value
+     - throws: an XMLDeserializationError is there is a problem with deserialization
+     */
     func value<T: XMLElementDeserializable>() throws -> [T?] {
         switch self {
         case .list(let elements):
@@ -301,11 +301,11 @@ public extension XMLIndexer {
     // MARK: - XMLIndexerDeserializable
 
     /**
-    Attempts to deserialize the current XMLIndexer element to `T`
+     Attempts to deserialize the current XMLIndexer element to `T`
 
-    - returns: the deserialized `T` value
-    - throws: an XMLDeserializationError is there is a problem with deserialization
-    */
+     - returns: the deserialized `T` value
+     - throws: an XMLDeserializationError is there is a problem with deserialization
+     */
     func value<T: XMLIndexerDeserializable>() throws -> T {
         switch self {
         case .element:
@@ -318,11 +318,11 @@ public extension XMLIndexer {
     }
 
     /**
-    Attempts to deserialize the current XMLIndexer element to `T?`
+     Attempts to deserialize the current XMLIndexer element to `T?`
 
-    - returns: the deserialized `T?` value
-    - throws: an XMLDeserializationError is there is a problem with deserialization
-    */
+     - returns: the deserialized `T?` value
+     - throws: an XMLDeserializationError is there is a problem with deserialization
+     */
     func value<T: XMLIndexerDeserializable>() throws -> T? {
         switch self {
         case .element:
@@ -335,11 +335,11 @@ public extension XMLIndexer {
     }
 
     /**
-    Attempts to deserialize the current XMLIndexer element to `[T]`
+     Attempts to deserialize the current XMLIndexer element to `[T]`
 
-    - returns: the deserialized `[T]` value
-    - throws: an XMLDeserializationError is there is a problem with deserialization
-    */
+     - returns: the deserialized `[T]` value
+     - throws: an XMLDeserializationError is there is a problem with deserialization
+     */
     func value<T>() throws -> [T] where T: XMLIndexerDeserializable {
         switch self {
         case .list(let elements):
@@ -354,11 +354,11 @@ public extension XMLIndexer {
     }
 
     /**
-    Attempts to deserialize the current XMLIndexer element to `[T]?`
+     Attempts to deserialize the current XMLIndexer element to `[T]?`
 
-    - returns: the deserialized `[T]?` value
-    - throws: an XMLDeserializationError is there is a problem with deserialization
-    */
+     - returns: the deserialized `[T]?` value
+     - throws: an XMLDeserializationError is there is a problem with deserialization
+     */
     func value<T: XMLIndexerDeserializable>() throws -> [T]? {
         switch self {
         case .list(let elements):
@@ -373,11 +373,11 @@ public extension XMLIndexer {
     }
 
     /**
-    Attempts to deserialize the current XMLIndexer element to `[T?]`
+     Attempts to deserialize the current XMLIndexer element to `[T?]`
 
-    - returns: the deserialized `[T?]` value
-    - throws: an XMLDeserializationError is there is a problem with deserialization
-    */
+     - returns: the deserialized `[T?]` value
+     - throws: an XMLDeserializationError is there is a problem with deserialization
+     */
     func value<T: XMLIndexerDeserializable>() throws -> [T?] {
         switch self {
         case .list(let elements):
@@ -452,7 +452,7 @@ public enum XMLDeserializationError: Error, CustomStringConvertible {
     case attributeDoesNotExist(element: XMLElement, attribute: String)
     case attributeDeserializationFailed(type: String, attribute: XMLAttribute)
 
-// swiftlint:disable identifier_name
+    // swiftlint:disable identifier_name
     @available(*, unavailable, renamed: "implementationIsMissing(method:)")
     public static func ImplementationIsMissing(method: String) -> XMLDeserializationError {
         fatalError("unavailable")
@@ -473,7 +473,7 @@ public enum XMLDeserializationError: Error, CustomStringConvertible {
     public static func AttributeDeserializationFailed(_ attr: String, _ value: String) throws -> XMLDeserializationError {
         fatalError("unavailable")
     }
-// swiftlint:enable identifier_name
+    // swiftlint:enable identifier_name
 
     /// The text description for the error thrown
     public var description: String {
@@ -498,13 +498,13 @@ public enum XMLDeserializationError: Error, CustomStringConvertible {
 
 extension String: XMLElementDeserializable, XMLAttributeDeserializable {
     /**
-    Attempts to deserialize XML element content to a String
+     Attempts to deserialize XML element content to a String
 
-    - parameters:
-        - element: the XMLElement to be deserialized
-    - throws: an XMLDeserializationError.typeConversionFailed if the element cannot be deserialized
-    - returns: the deserialized String value
-    */
+     - parameters:
+     - element: the XMLElement to be deserialized
+     - throws: an XMLDeserializationError.typeConversionFailed if the element cannot be deserialized
+     - returns: the deserialized String value
+     */
     public static func deserialize(_ element: XMLElement) -> String {
         return element.text
     }
@@ -522,13 +522,13 @@ extension String: XMLElementDeserializable, XMLAttributeDeserializable {
 
 extension Int: XMLElementDeserializable, XMLAttributeDeserializable {
     /**
-    Attempts to deserialize XML element content to a Int
+     Attempts to deserialize XML element content to a Int
 
-    - parameters:
-        - element: the XMLElement to be deserialized
-    - throws: an XMLDeserializationError.typeConversionFailed if the element cannot be deserialized
-    - returns: the deserialized Int value
-    */
+     - parameters:
+     - element: the XMLElement to be deserialized
+     - throws: an XMLDeserializationError.typeConversionFailed if the element cannot be deserialized
+     - returns: the deserialized Int value
+     */
     public static func deserialize(_ element: XMLElement) throws -> Int {
         guard let value = Int(try element.nonEmptyTextOrThrow()) else {
             throw XMLDeserializationError.typeConversionFailed(type: "Int", element: element)
@@ -541,7 +541,7 @@ extension Int: XMLElementDeserializable, XMLAttributeDeserializable {
 
      - parameter attribute: The XMLAttribute to be deserialized
      - throws: an XMLDeserializationError.attributeDeserializationFailed if the attribute cannot be
-               deserialized
+     deserialized
      - returns: the deserialized Int value
      */
     public static func deserialize(_ attribute: XMLAttribute) throws -> Int {
@@ -555,13 +555,13 @@ extension Int: XMLElementDeserializable, XMLAttributeDeserializable {
 
 extension Double: XMLElementDeserializable, XMLAttributeDeserializable {
     /**
-    Attempts to deserialize XML element content to a Double
+     Attempts to deserialize XML element content to a Double
 
-    - parameters:
-        - element: the XMLElement to be deserialized
-    - throws: an XMLDeserializationError.typeConversionFailed if the element cannot be deserialized
-    - returns: the deserialized Double value
-    */
+     - parameters:
+     - element: the XMLElement to be deserialized
+     - throws: an XMLDeserializationError.typeConversionFailed if the element cannot be deserialized
+     - returns: the deserialized Double value
+     */
     public static func deserialize(_ element: XMLElement) throws -> Double {
         guard let value = Double(try element.nonEmptyTextOrThrow()) else {
             throw XMLDeserializationError.typeConversionFailed(type: "Double", element: element)
@@ -574,7 +574,7 @@ extension Double: XMLElementDeserializable, XMLAttributeDeserializable {
 
      - parameter attribute: The XMLAttribute to be deserialized
      - throws: an XMLDeserializationError.attributeDeserializationFailed if the attribute cannot be
-               deserialized
+     deserialized
      - returns: the deserialized Double value
      */
     public static func deserialize(_ attribute: XMLAttribute) throws -> Double {
@@ -588,13 +588,13 @@ extension Double: XMLElementDeserializable, XMLAttributeDeserializable {
 
 extension Float: XMLElementDeserializable, XMLAttributeDeserializable {
     /**
-    Attempts to deserialize XML element content to a Float
+     Attempts to deserialize XML element content to a Float
 
-    - parameters:
-        - element: the XMLElement to be deserialized
-    - throws: an XMLDeserializationError.typeConversionFailed if the element cannot be deserialized
-    - returns: the deserialized Float value
-    */
+     - parameters:
+     - element: the XMLElement to be deserialized
+     - throws: an XMLDeserializationError.typeConversionFailed if the element cannot be deserialized
+     - returns: the deserialized Float value
+     */
     public static func deserialize(_ element: XMLElement) throws -> Float {
         guard let value = Float(try element.nonEmptyTextOrThrow()) else {
             throw XMLDeserializationError.typeConversionFailed(type: "Float", element: element)
@@ -607,7 +607,7 @@ extension Float: XMLElementDeserializable, XMLAttributeDeserializable {
 
      - parameter attribute: The XMLAttribute to be deserialized
      - throws: an XMLDeserializationError.attributeDeserializationFailed if the attribute cannot be
-               deserialized
+     deserialized
      - returns: the deserialized Float value
      */
     public static func deserialize(_ attribute: XMLAttribute) throws -> Float {
@@ -626,7 +626,7 @@ extension Bool: XMLElementDeserializable, XMLAttributeDeserializable {
      described [here](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/#//apple_ref/occ/instp/NSString/boolValue)
 
      - parameters:
-        - element: the XMLElement to be deserialized
+     - element: the XMLElement to be deserialized
      - throws: an XMLDeserializationError.typeConversionFailed if the element cannot be deserialized
      - returns: the deserialized Bool value
      */
@@ -641,7 +641,7 @@ extension Bool: XMLElementDeserializable, XMLAttributeDeserializable {
 
      - parameter attribute: The XMLAttribute to be deserialized
      - throws: an XMLDeserializationError.attributeDeserializationFailed if the attribute cannot be
-               deserialized
+     deserialized
      - returns: the deserialized Bool value
      */
     public static func deserialize(_ attribute: XMLAttribute) throws -> Bool {
