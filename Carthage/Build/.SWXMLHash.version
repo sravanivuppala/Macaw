@@ -1,0 +1,19 @@
+{
+  "commitish" : "16053dbbae6664a3f5f647aef1fb9bb752ed46dd",
+  "iOS" : [
+    {
+      "swiftToolchainVersion" : "5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)",
+      "hash" : "ba781b71df76c6b0c3678d57b3e2989dba1fffa31b02129ef12d1cfb643b078f",
+      "name" : "SWXMLHash",
+      "container" : "SWXMLHash.xcframework",
+      "identifier" : "ios-arm64"
+    },
+    {
+      "swiftToolchainVersion" : "5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)",
+      "hash" : "395e50e04d6761e2b0ddff05be670ef00ffd359b397c5016f5d4aae3cd42e61b",
+      "name" : "SWXMLHash",
+      "container" : "SWXMLHash.xcframework",
+      "identifier" : "ios-arm64_x86_64-simulator"
+    }
+  ]
+}
